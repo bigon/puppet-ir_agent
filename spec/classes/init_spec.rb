@@ -26,21 +26,21 @@ describe 'ir_agent' do
         let(:audisp_plugins_package) { nil }
         let(:af_unix_source) { "puppet:///modules/#{module_name}/af_unix.conf" }
         let(:af_unix_conf) { nil }
-      when '8', '9'
+      when '8'
         let(:audit_rules) { '/etc/audit/rules.d/audit.rules' }
         let(:audispd_conf) { '/etc/audit/auditd.conf' }
         let(:audisp_plugins_dir) { '/etc/audit/plugins.d' }
         let(:audisp_plugins_package) { 'audispd-plugins' }
         let(:af_unix_conf) do
-          ['path = /sbin/audisp-af_unix', 'type = always', 'args = 0600 /var/run/audispd_events', 'format = binary']
+          ['path = /sbin/audisp-af_unix', 'type = always', 'args = 0600 /var/run/audispd_events', 'format = string']
         end
-      when '10'
+      when '9', '10'
         let(:audit_rules) { '/etc/audit/rules.d/audit.rules' }
         let(:audispd_conf) { '/etc/audit/auditd.conf' }
         let(:audisp_plugins_dir) { '/etc/audit/plugins.d' }
         let(:audisp_plugins_package) { 'audispd-plugins' }
         let(:af_unix_conf) do
-          ['path = /sbin/audisp-af_unix', 'type = always', 'args = 0600 /var/run/audispd_events binary', 'format = binary']
+          ['path = /sbin/audisp-af_unix', 'type = always', 'args = 0600 /var/run/audispd_events string', 'format = binary']
         end
       end
 
