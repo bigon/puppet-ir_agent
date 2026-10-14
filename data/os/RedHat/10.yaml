@@ -1,0 +1,5 @@
+---
+# audit >= 4.0 takes the socket output format as a third plugin argument and
+# falls back to its defaults (mode 0640, string) when it is missing. The
+# plugin expects binary input from auditd.
+ir_agent::audisp::af_unix::args: '0600 /var/run/audispd_events binary'

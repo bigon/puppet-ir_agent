@@ -66,6 +66,11 @@ manage_auditd attribute is set to false. The audit package can then be removed
 and this module will not reinstall the audit package as long as ensure is set
 to absent.
 
+On EL8 and newer, the af_unix audit plugin used in auditd compatibility mode is
+shipped in the audispd-plugins package. If manage_audit_package is set to false
+while manage_auditd is true, that package must be installed by other means,
+otherwise auditd cannot start the plugin and Insight Agent receives no events.
+
 ### Auditd Compatibility Mode
 
 If the manage_auditd attribute is set to false and auditd_compatibility_mode is

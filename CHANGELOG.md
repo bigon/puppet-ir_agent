@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 ## Unreleased
 
 - Add support for EL10 and clones.
+- Install audispd-plugins on EL8+ in auditd compatibility mode: since audit
+  3.0 the af_unix plugin is a standalone program shipped in that package.
+- Configure the af_unix plugin per audit version: use the standalone plugin
+  path instead of the obsolete builtin_af_unix on EL8+, and pass the socket
+  output format as plugin argument on EL10 (audit 4).
 
 ## Release 2.0.0
 
