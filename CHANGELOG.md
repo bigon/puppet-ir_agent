@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## Unreleased
+
+- Add support for EL10 and clones.
+
 ## Release 2.0.0
 
 - Add support for installing using package instead of .sh script. Defaults to

@@ -20,7 +20,7 @@ describe 'ir_agent' do
         let(:audit_rules) { '/etc/audit/rules.d/audit.rules' }
         let(:audispd_conf) { '/etc/audisp/audispd.conf' }
         let(:audisp_plugins_dir) { '/etc/audisp/plugins.d' }
-      when '8', '9'
+      when '8', '9', '10'
         let(:audit_rules) { '/etc/audit/rules.d/audit.rules' }
         let(:audispd_conf) { '/etc/audit/auditd.conf' }
         let(:audisp_plugins_dir) { '/etc/audit/plugins.d' }

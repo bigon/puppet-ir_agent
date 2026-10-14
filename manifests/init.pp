@@ -60,7 +60,7 @@ class ir_agent (
   Boolean $manage_audit_package = true,
   Optional[String] $https_proxy = undef,
 ) {
-  unless $facts.get('os.family') == 'RedHat' and $facts.get('os.release.major') in ['6', '7', '8', '9'] {
+  unless $facts.get('os.family') == 'RedHat' and $facts.get('os.release.major') in ['6', '7', '8', '9', '10'] {
     fail('unsupported operating system')
   }
 
