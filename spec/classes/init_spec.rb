@@ -109,8 +109,13 @@ describe 'ir_agent' do
                     'source' => "puppet:///modules/#{module_name}/audit.rules",
                   )
                   .that_notifies('Service[auditd]')
+                is_expected.to contain_exec('backup_af_unix_conf')
+                  .with_creates("#{audisp_plugins_dir}/af_unix.conf.puppet-bak")
+                  .that_requires('Package[audit]')
+                  .that_comes_before("File[#{audisp_plugins_dir}/af_unix.conf]")
                 is_expected.to contain_file("#{audisp_plugins_dir}/af_unix.conf")
                   .with_ensure('file')
+                  .with_backup(false)
                   .that_requires('Package[audit]')
                   .that_notifies('Service[auditd]')
                 if af_unix_conf

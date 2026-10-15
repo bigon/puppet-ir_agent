@@ -81,9 +81,20 @@ class ir_agent::audit {
         }
       }
 
+      # Back up the original configuration only once, for uninstall: the
+      # file backup would replace it on every content change.
+      exec { 'backup_af_unix_conf':
+        command => "cp -p ${audisp_plugins_dir}/af_unix.conf ${audisp_plugins_dir}/af_unix.conf.puppet-bak",
+        creates => "${audisp_plugins_dir}/af_unix.conf.puppet-bak",
+        onlyif  => "test -f ${audisp_plugins_dir}/af_unix.conf",
+        path    => ['/bin', '/usr/bin'],
+        require => [$_auditd_package, $_audisp_plugins_package],
+        before  => File["${audisp_plugins_dir}/af_unix.conf"],
+      }
+
       file { "${audisp_plugins_dir}/af_unix.conf":
         ensure  => file,
-        backup  => '.puppet-bak',
+        backup  => false,
         owner   => 'root',
         group   => 'root',
         mode    => '0640',
